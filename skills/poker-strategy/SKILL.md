@@ -111,7 +111,7 @@ All active strategies also vote in a weighted blend:
 
 ## Tuning
 
-Edit these values in `src/engine.js` or override when constructing `HermesAgent`:
+Edit these values in `skills/poker-strategy/src/engine.js` or override when constructing `HermesAgent`:
 
 | Setting | Default | Effect |
 |---|---|---|

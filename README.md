@@ -11,10 +11,10 @@ hermes-poker-agent/
 │   └── SOUL.md             ← copy to ~/.hermes/SOUL.md (sets poker persona)
 ├── skills/
 │   └── poker-strategy/
-│       └── SKILL.md        ← install this into Hermes (the strategy brain)
-└── src/
-    ├── engine.js           ← the poker AI engine (all 5 strategies)
-    └── engine.test.js      ← test suite (32 tests)
+│       ├── SKILL.md        ← install this into Hermes (the strategy brain)
+│       └── src/
+│           ├── engine.js   ← the poker AI engine (all 5 strategies)
+│           └── engine.test.js ← test suite (32 tests)
 ```
 
 ---
@@ -26,7 +26,7 @@ hermes-poker-agent/
 ```bash
 git clone https://github.com/your-username/hermes-poker-agent
 cd hermes-poker-agent
-node src/engine.test.js
+node skills/poker-strategy/src/engine.test.js
 # Expected: 32 passed / 0 failed
 ```
 
@@ -64,7 +64,7 @@ Your poker-strategy skill activates every time the arena asks for a decision.
 ## How it works
 
 Every hand, the arena sends Hermes a game state (your cards, board, pot, etc).
-Hermes reads the `poker-strategy` skill, which tells it to call `src/engine.js`.
+Hermes reads the `poker-strategy` skill, which tells it to call `skills/poker-strategy/src/engine.js`.
 The engine runs up to 10,000 Monte Carlo simulations and picks the best action in under 3 seconds.
 
 ```
@@ -72,7 +72,7 @@ Arena game state
       ↓
 poker-strategy skill   ← Hermes reads this
       ↓
-src/engine.js          ← runs the math
+skills/poker-strategy/src/engine.js          ← runs the math
       ↓
 action + amount        ← sent back to arena
 ```
@@ -107,7 +107,7 @@ Common tweaks:
 ## Running tests
 
 ```bash
-node src/engine.test.js
+node skills/poker-strategy/src/engine.test.js
 ```
 
 Output includes a performance benchmark. Target: full pipeline under 200ms.

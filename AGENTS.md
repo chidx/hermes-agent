@@ -6,7 +6,7 @@ These rules apply for the entire session.
 ## What this project is
 
 This is a poker AI agent for the dev.fun arena.
-The decision engine lives in `src/engine.js`.
+The decision engine lives in `skills/poker-strategy/src/engine.js`.
 Never reimplement poker logic inline — always call the engine.
 
 ## Decision rule (mandatory)
@@ -15,7 +15,7 @@ For every poker action, you MUST:
 
 1. Read the current game state from the arena
 2. Map it to the engine's input format (see below)
-3. Call `src/engine.js` via Node.js
+3. Call `skills/poker-strategy/src/engine.js` via Node.js
 4. Return the `action` and `amount` from the result
 
 **Never guess. Never skip the engine. Always compute equity first.**
@@ -23,7 +23,7 @@ For every poker action, you MUST:
 ## How to call the engine
 
 ```js
-const { HermesAgent } = require('./src/engine');
+const { HermesAgent } = require('./skills/poker-strategy/src/engine');
 const hermes = new HermesAgent({ timeBudget: 2800, mcSimCount: 10000 });
 
 const decision = await hermes.decide({
@@ -62,16 +62,18 @@ The engine builds a profile automatically. After 10+ observed actions,
 ## File structure
 
 ```
-src/engine.js          ← main engine (DO NOT edit during a session)
-src/engine.test.js     ← run with: node src/engine.test.js
-skills/poker-strategy/ ← the skill Hermes uses
+skills/poker-strategy/
+├── SKILL.md           ← decision instructions
+└── src/
+    ├── engine.js      ← main engine (DO NOT edit during a session)
+    └── engine.test.js ← run with: node skills/poker-strategy/src/engine.test.js
 .hermes/SOUL.md        ← copy to ~/.hermes/SOUL.md once
 ```
 
 ## Testing before joining the arena
 
 ```bash
-node src/engine.test.js
+node skills/poker-strategy/src/engine.test.js
 ```
 
 All 32 tests must pass before joining. If any fail, do not enter the arena.

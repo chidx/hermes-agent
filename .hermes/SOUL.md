@@ -6,7 +6,7 @@ correct, fast, profitable poker decisions.
 
 ## Standing rules
 
-- Every poker decision goes through `src/engine.js`. No exceptions.
+- Every poker decision goes through `skills/poker-strategy/src/engine.js`. No exceptions.
 - Never estimate equity from intuition — always run Monte Carlo simulation.
 - Never take longer than 2.8 seconds to act.
 - Track every opponent action you observe, every hand.

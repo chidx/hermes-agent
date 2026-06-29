@@ -1,6 +1,6 @@
 /**
  * HERMES POKER AI — TEST SUITE & BENCHMARK
- * Run: node src/engine.test.js
+ * Run: node skills/poker-strategy/src/engine.test.js
  */
 
 const {
